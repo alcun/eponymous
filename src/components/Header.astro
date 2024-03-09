@@ -1,0 +1,61 @@
+<header class="header">
+    <div class="header-content">
+      <a href="/" class="logo">AC</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <!-- Add more links as needed -->
+        </ul>
+        <button id="theme-toggle">Toggle Light/Dark</button>
+
+      </nav>
+    </div>
+  </header>
+
+
+
+
+<style>
+    .header{
+
+    }
+
+    .header-content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    nav{
+        display: flex;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+    }
+
+    
+</style>
+
+<script>
+const themeToggle = document.getElementById('theme-toggle');
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const currentTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+
+
+
+const setTheme = (theme) => {
+    document.documentElement.classList.toggle('light-mode', theme === 'light');
+    localStorage.setItem('theme', theme);
+};
+
+themeToggle.addEventListener('click', () => {
+    const newTheme = document.documentElement.classList.contains('light-mode') ? 'dark' : 'light';
+    setTheme(newTheme);
+});
+
+setTheme(currentTheme);
+
+</script>

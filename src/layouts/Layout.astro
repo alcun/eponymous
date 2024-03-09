@@ -1,0 +1,92 @@
+---
+import Navbar from "../components/Navbar.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+	<ViewTransitions />
+  </head>
+  <body>
+    <Navbar />
+	<ThemeToggle/>
+	<main>
+    <slot /></main>
+  </body>
+</html>
+
+
+<style is:global>
+/* Global Variables */
+:root {
+    --background-color: #13151a; /* Dark mode background */
+    --text-color: #ffffff; /* Dark mode text color */
+    --code-background: /* Your dark mode code background color */;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(136, 58, 234),
+      rgb(224, 204, 250) 30%,
+      #13151a 60%
+    );
+    /* Other shared variables */
+}
+
+/* Manual Light Mode Override */
+.light-mode {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --code-background: /* Your light mode code background color */;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(136, 58, 234),
+      rgb(224, 204, 250) 30%,
+      white 60%
+    );
+}
+
+/* Applying Variables */
+html {
+    background: var(--background-color);
+    color: var(--text-color);
+    font-family: system-ui, sans-serif;
+    background-size: 224px;
+	
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+code {
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    background: var(--code-background);
+}
+
+a {
+	text-decoration: none;
+}
+main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    font-size: 20px;
+    line-height: 1.6;
+  }
+</style>

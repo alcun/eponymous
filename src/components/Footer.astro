@@ -1,0 +1,54 @@
+<!-- Footer component in Astro -->
+<footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2024 alcun</p>
+      <div class="social-links">
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/github-icon.svg" alt="GitHub">
+        </a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/linkedin-icon.svg" alt="LinkedIn">
+        </a>
+        <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/twitter-icon.svg" alt="Twitter">
+        </a>
+        <!-- Add more social links as needed -->
+      </div>
+    </div>
+  </footer>
+
+  <style>
+/* Footer CSS */
+.footer {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.8em; /* Smaller font size */
+}
+.footer-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    margin: 0 5px; /* Less space between icons */
+    display: inline-block;
+}
+
+.social-links img {
+    width: 20px; /* Smaller icons */
+    height: auto;
+    vertical-align: middle;
+}
+
+/* Adjustments for very small screens */
+@media (max-width: 400px) {
+    .footer {
+        font-size: 0.7em;
+    }
+}
+
+  </style>

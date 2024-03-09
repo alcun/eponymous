@@ -1,0 +1,107 @@
+<nav class="nav">
+  <div class="nav-content">
+    <a href="/" class="logo">EM</a>
+    <button id="menu-toggle">☰</button>
+
+    <!-- Menu toggle for mobile -->
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <!-- Add more links as needed -->
+      </ul>
+    </nav>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    /* Your existing styles for .header, plus any modifications for mobile view */
+    height: 100vh;
+    button {
+background-color: transparent;
+    }
+  }
+
+  .nav-content {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    /* Other styling as needed */
+  }
+
+  #menu-toggle {
+    display: none; /* Hidden by default, shown in mobile view */
+  }
+
+  nav > nav {
+    display: flex;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex; /* Display horizontally in desktop view */
+  }
+
+  .logo {
+    margin-bottom: 1rem;
+  }
+
+  /* Responsive Styles for Desktop View */
+  @media (min-width: 768px) {
+    .nav {
+      /* Adjust for sidebar styling */
+      position: fixed;
+      width: 4rem; /* Sidebar width */
+      height: 100%;
+      border-right: 1px solid var(--text-color);
+      /* Other sidebar styles */
+    }
+
+    .nav-content {
+      flex-direction: column;
+      height: 100%;
+      width: 4rem;
+      padding: 1rem 0rem;
+    }
+
+    .nav-links {
+      flex-direction: column; /* Stack links vertically in sidebar */
+      /* Other sidebar styles */
+    }
+
+    #menu-toggle {
+      display: none; /* Hide menu toggle in desktop view */
+    }
+  }
+
+  /* Adjust navbar appearance and functionality for mobile view */
+  @media (max-width: 767px) {
+    .nav-links,
+    #theme-toggle {
+      display: none; /* Hide by default, show when menu is toggled */
+    }
+
+    #menu-toggle {
+      display: block; /* Show menu toggle button */
+    }
+
+    /* When menu is toggled */
+    .nav-active .nav-links,
+    .nav-active #theme-toggle {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+
+
+  document.getElementById("menu-toggle").addEventListener("click", function () {
+    document.querySelector(".nav-content").classList.toggle("nav-active");
+  });
+
+
+</script>

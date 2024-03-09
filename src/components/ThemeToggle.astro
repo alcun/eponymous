@@ -1,0 +1,34 @@
+<button id="theme-toggle">🌜</button>
+
+<style>
+  #theme-toggle {
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+    font-size: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+  }
+</style>
+<script>
+const themeToggle = document.getElementById('theme-toggle');
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const currentTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+
+const updateButtonContent = (theme) => {
+  themeToggle.textContent = theme === 'light' ? '🌞' : '🌜';
+};
+
+const setTheme = (theme) => {
+  document.documentElement.classList.toggle('light-mode', theme === 'light');
+  localStorage.setItem('theme', theme);
+  updateButtonContent(theme);
+};
+
+themeToggle.addEventListener('click', () => {
+  const newTheme = document.documentElement.classList.contains('light-mode') ? 'dark' : 'light';
+  setTheme(newTheme);
+});
+
+setTheme(currentTheme);
+</script>
