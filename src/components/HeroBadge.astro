@@ -11,7 +11,13 @@
   <div class="atropos-scale">
     <div class="atropos-rotate">
       <div class="atropos-inner">
-        <h1>Test</h1>
+        <div class="hero-badge">
+          <div class="hero-badge-inner">
+            <h2>Hello! My name is</h2>
+            <div class="hero-badge-middle"><h1>Eponymous</h1></div>
+            <span>hee</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -34,3 +40,25 @@
     document.body.appendChild(script);
   });
 </script>
+
+<style>
+    .atropos {
+        margin-bottom: 4rem;
+    }
+  .atropos-inner {
+    width: 500px;
+    background-color: antiquewhite;
+    border-radius: 12px;
+    background-color: red;
+
+  }
+
+  .hero-badge-inner {
+  }
+
+  .hero-badge-middle {
+    background-color: var(--background-color);
+    color: var(--text-color);
+padding: 1rem;
+  }
+</style>

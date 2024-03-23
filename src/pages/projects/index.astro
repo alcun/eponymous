@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from "../../layouts/Layout.astro";
+
+
+// Fetch all entries from the 'project' collection
+const blogPosts = await getCollection('projects');
+
+---
+<Layout title="Projects">
+<div>
+  <h1>Projects</h1>
+  <ul>
+    {blogPosts.map(post => (
+      <li key={post.slug}>
+        <a href={`/projects/${post.slug}`}>
+          <h2>{post.data.title}</h2>
+        </a>
+        {post.data.summary}
+      </li>
+    ))}
+  </ul>
+  
+</div>
+</Layout>
