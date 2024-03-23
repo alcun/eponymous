@@ -24,33 +24,51 @@
 </div>
 
 <!-- Referencing Atropos JavaScript from the public directory -->
-<script type="module">
-  // Ensure the page has loaded before trying to access the Atropos library
-  document.addEventListener("DOMContentLoaded", (event) => {
-    // Using a script tag to load the Atropos library from the public folder
+<script>
+  function init() {
+    // Ensure the page has loaded before trying to access external libraries
     const script = document.createElement("script");
     script.src = "/atropos/atropos.min.js";
     script.onload = () => {
-      // Initialize Atropos after the script has loaded
+      // Initialize Atropos or any other scripts after the library has loaded
       const myAtropos = Atropos({
         el: ".my-atropos",
         // Additional options here
       });
+
+      // Clean up by destroying instances and removing event listeners before swapping pages
+      document.addEventListener(
+        "astro:before-swap",
+        () => {
+          // Perform any necessary cleanup
+          myAtropos?.destroy?.();
+          // Example: burger.removeEventListener(...)
+        },
+        { once: true }
+      );
     };
     document.body.appendChild(script);
-  });
-</script>
+  }
 
+  // Initialize on first load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  // Re-initialize after swapping pages
+  document.addEventListener("astro:after-swap", init);
+</script>
 <style>
-    .atropos {
-        margin-bottom: 4rem;
-    }
+  .atropos {
+    margin-bottom: 4rem;
+  }
   .atropos-inner {
     width: 500px;
     background-color: antiquewhite;
     border-radius: 12px;
     background-color: red;
-
   }
 
   .hero-badge-inner {
@@ -59,6 +77,6 @@
   .hero-badge-middle {
     background-color: var(--background-color);
     color: var(--text-color);
-padding: 1rem;
+    padding: 1rem;
   }
 </style>
