@@ -1,3 +1,6 @@
+# New astro template in the works!
+
+
 # Astro Starter Kit: Basics
 
 ```sh

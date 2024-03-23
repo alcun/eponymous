@@ -1,0 +1,36 @@
+---
+// Your frontmatter script. JavaScript imports for client-side libraries
+// don't go here if they're in the public folder.
+---
+
+<!-- Linking the Atropos CSS file -->
+<link rel="stylesheet" href="/atropos/atropos.min.css" />
+
+<!-- main Atropos container -->
+<div class="atropos my-atropos">
+  <div class="atropos-scale">
+    <div class="atropos-rotate">
+      <div class="atropos-inner">
+        <h1>Test</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Referencing Atropos JavaScript from the public directory -->
+<script type="module">
+  // Ensure the page has loaded before trying to access the Atropos library
+  document.addEventListener("DOMContentLoaded", (event) => {
+    // Using a script tag to load the Atropos library from the public folder
+    const script = document.createElement("script");
+    script.src = "/atropos/atropos.min.js";
+    script.onload = () => {
+      // Initialize Atropos after the script has loaded
+      const myAtropos = Atropos({
+        el: ".my-atropos",
+        // Additional options here
+      });
+    };
+    document.body.appendChild(script);
+  });
+</script>

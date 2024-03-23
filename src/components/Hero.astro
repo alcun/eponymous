@@ -1,9 +1,15 @@
+---
+import HeroBadge from "./HeroBadge.astro";
+
+---
+
 <section class="hero">
-  <div id="interactive-badge" class="badge">
+  <!-- <div id="interactive-badge" class="badge">
     <div>Hello. My name is:</div>
     <div class="badge-span">Eponymous</div>
     <div>&nbsp;</div>
-  </div>
+  </div> -->
+  <HeroBadge/>
   <div class="hero-text">
     <h1>I develop stuff on the web</h1>
     <h3>Front end</h3>
@@ -20,15 +26,20 @@
 
     height: 80vh; /* Full viewport height */
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    text-align: center;
     background:; /* Your background choice *;
     /* Other styling */
   }
   .hero-text {
-    width: 40%;
+    width: 80%;
     display: flex;
     flex-direction: column;
+    h1 {
+      margin-bottom: 1rem;
+    }
     h1, h3{
         margin: 0;
         padding: 0;
@@ -46,6 +57,7 @@
     /* Initial styles for the badge */
     transition: all 0.5s ease; /* Smooth transition for changes */
     /* More styling */
+    margin-bottom: 3rem;
     .badge-span {
       background-color: azure;
       text-align: center;
@@ -72,3 +84,4 @@
     }
   });
 </script>
+  
