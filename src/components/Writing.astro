@@ -1,25 +1,21 @@
-<section id="writing">
-    <h2>Writing</h2>
-    <div class="writing-item">
-      <h3>Blog post title</h3>
-      <p>blog summary from mapped blog collection</p>
-      <!-- Add more details or a link -->
-    </div>
-    <div class="writing-item">
-        <h3>Blog post title</h3>
-        <p>blog summary from mapped blog collection</p>
-        <!-- Add more details or a link -->
-      </div>
+---
+import { getCollection } from 'astro:content';
+
+// Fetch the first three blogs
+const allBlogs = await getCollection('blog');
+const blogs = allBlogs.slice(0, 3);
+---
+
+
+  <section id="writing">
+    <h2>Things I've Written</h2>
+    {blogs.map(blog => (
       <div class="writing-item">
-        <h3>Blog post title</h3>
-        <p>blog summary from mapped blog collection</p>
-        <!-- Add more details or a link -->
+        <h3>{blog.data.title}</h3>
+        <p>{blog.data.summary}</p>
+        <!-- Add a link to the detailed blog post -->
+        <a href={`/blog/${blog.slug}`}>Read more</a>
       </div>
-      <div class="writing-item">
-        <h3>Blog post title</h3>
-        <p>blog summary from mapped blog collection</p>
-        <!-- Add more details or a link -->
-      </div>
-    <!-- Repeat for other projects -->
+    ))}
   </section>
-  
+

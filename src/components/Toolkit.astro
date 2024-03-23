@@ -1,15 +1,70 @@
-<section id="toolkit">
-    <h2>Toolkit</h2>
-    <p> With any project, pragmatism is the name of the game and any tool is up for consideration if it is the right fit.</p>
-    <p> That being said, the following is a list of tools I am familliar with and will tend to reach for:</p>
-    <ul>
-      <li>node</li>
-      <li>js</li>
-      <li>next</li>
-      <li>react</li>
-      <li>astro</li>
-      <li>js</li>
-    </ul>
+---
 
-  </section>
+const technologies = [
+  { id: 'javascript', label: 'JavaScript', summary: 'The core scripting language of the web, enabling dynamic content and interactive web applications.' },
+  { id: 'next', label: 'Next.js', summary: 'A React framework for production, providing server-side rendering and generating static websites for React based web applications.' },
+  { id: 'node', label: 'Node.js', summary: 'A JavaScript runtime built on Chrome\'s V8 JavaScript engine, enabling server-side scripting and creating scalable network applications.' },
+  { id: 'express', label: 'Express', summary: 'A fast, unopinionated, minimalist web framework for Node.js, designed for building web applications and APIs.' },
+  { id: 'react', label: 'React', summary: 'A JavaScript library for building user interfaces, maintained by Facebook and a community of individual developers and companies.' },
+  { id: 'astro', label: 'Astro', summary: 'An all-in-one web framework for building fast, content-focused websites with less client-side JavaScript.' },
+  { id: 'typescript', label: 'TypeScript', summary: 'A superset of JavaScript that adds static types, designed to develop large applications and transpile to JavaScript.' },
+  { id: 'react-native', label: 'React Native', summary: 'A framework for building native apps using React, enabling developers to use React\'s framework along with native platform capabilities.' },
+  { id: 'expo', label: 'Expo', summary: 'An open-source platform for making universal native apps for Android, iOS, and the web with JavaScript and React.' },
+  { id: 'html5', label: 'HTML5', summary: 'The latest version of the Hypertext Markup Language, providing the primary content structure for the web.' },
+  { id: 'css', label: 'CSS', summary: 'Cascading Style Sheets, a stylesheet language used to describe the presentation of a document written in HTML or XML.' },
+  { id: 'scss', label: 'SCSS', summary: 'Sassy CSS, an extension of CSS that adds power and elegance to the basic language, allowing variables, nesting, and more.' },
+  { id: 'styled-components', label: 'Styled Components', summary: 'A library for React and React Native that allows you to use component-level styles in your application.' },
+  { id: 'aws-ec2', label: 'AWS EC2', summary: 'Amazon Web Services Elastic Compute Cloud, a web service that provides resizable compute capacity in the cloud, designed to make web-scale cloud computing easier for developers.' },
+  { id: 'python', label: 'Python', summary: 'A high-level, interpreted, general-purpose programming language known for its readability and comprehensive standard library.' },
+  { id: 'linux', label: 'Linux', summary: 'A family of open-source Unix-like operating systems based on the Linux kernel, an operating system kernel first released on September 17, 1991, by Linus Torvalds.' },
+  { id: 'git', label: 'Git', summary: 'A distributed version-control system for tracking changes in source code during software development, designed for coordinating work among programmers.' },
+  { id: 'bash', label: 'Bash', summary: 'Bourne Again SHell, a Unix shell and command language written by Brian Fox for the GNU Project as a free software replacement for the Bourne shell.' },
+  { id: 'wordpress', label: 'WordPress', summary: 'A free and open-source content management system based on PHP and MySQL, used to create websites and blogs.' },
+  { id: 'd3', label: 'D3.js', summary: 'A JavaScript library for producing dynamic, interactive data visualizations in web browsers, using the widely implemented SVG, HTML5, and CSS standards.' },
+  { id: 'es6', label: 'ES6', summary: 'ECMAScript 6, also known as ECMAScript 2015, a major update to JavaScript that includes dozens of new features.' },
+  { id: 'jest', label: 'Jest', summary: 'A delightful JavaScript Testing Framework with a focus on simplicity, used by Facebook to test all JavaScript code including React applications.' },
+  { id: 'react-testing-library', label: 'React Testing Library', summary: 'A set of helpers that let you test React components without relying on their implementation details, encouraging better testing practices.' },
+
+];
+---
+
+<section id="toolkit">
+  <h2>Toolkit</h2>
+  <p>With any project, pragmatism is the name of the game and any tool is up for consideration if it is the right fit.</p>
+  <p>That being said, the following is a list of tools I am familiar with and will tend to reach for:</p>
+  <ul>
+    {technologies.map(tech => (
+      <li>
+        <strong>{tech.label}</strong> - {tech.summary}
+      </li>
+    ))}
+  </ul>
+</section>
   
+
+<style>
+   ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates a 2-column layout */
+    gap: 20px; /* Adjusts the space between items */
+    list-style: none; /* Removes default list styling */
+    padding: 0; /* Removes default padding */
+
+  }
+
+   li {
+    background-color: var(--accent-gradient); /* Light background color for each item */
+    border: 1px solid #ddd; /* Adds a border */
+    padding: 10px; /* Adds some padding around the content */
+    border-radius: 5px; /* Optional: rounds the corners */
+
+  }
+
+   strong {
+    display: block; /* Makes the label take its own line */
+    margin-bottom: 5px; /* Adds a little space below the label */
+
+  }
+
+  
+</style>

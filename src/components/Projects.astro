@@ -1,10 +1,21 @@
-<section id="projects">
-    <h2>Projects</h2>
-    <div class="project-item">
-      <h3>Project 1</h3>
-      <p>Description of Project 1.</p>
-      <!-- Add more details or a link -->
-    </div>
-    <!-- Repeat for other projects -->
+---
+import { getCollection } from 'astro:content';
+
+// Fetch the first three projects
+const allProjects = await getCollection('projects');
+const projects = allProjects.slice(0, 3);
+---
+
+
+  <section id="projects">
+    <h2>Things I've Worked On</h2>
+    {projects.map(project => (
+      <div class="project-item">
+        <h3>{project.data.title}</h3>
+        <p>{project.data.summary}</p>
+        <!-- Add a link to the detailed project page -->
+        <a href={`/projects/${project.slug}`}>Read more</a>
+      </div>
+    ))}
   </section>
-  
+
