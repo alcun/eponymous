@@ -11,9 +11,9 @@ import HeroBadge from "./HeroBadge.astro";
   </div> -->
   <HeroBadge/>
   <div class="hero-text">
-    <h1>Full Stack web development</h1>
+    <h1>Full Stack Web Development</h1>
     <h3>Front end</h3>
-    <h3>Back end end</h3>
+    <h3>Back end</h3>
     <h3>Full stack</h3>
   </div>
   <!-- Other hero content like title, description, etc. -->
@@ -21,6 +21,7 @@ import HeroBadge from "./HeroBadge.astro";
 <style>
   /* Style for the hero section */
   .hero {
+    padding-top: 3rem;
     position: relative;
     width: 100%;
 
@@ -34,54 +35,24 @@ import HeroBadge from "./HeroBadge.astro";
     /* Other styling */
   }
   .hero-text {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    h1 {
-      margin-bottom: 1rem;
-    }
+   
     h1, h3{
         margin: 0;
         padding: 0;
     }
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+    h3{
+      margin-bottom: 1rem;
+    }
   }
 
   /* Style for the badge */
-  .badge {
-    width: 35%;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    /* position: absolute; */
-    /* Initial styles for the badge */
-    transition: all 0.5s ease; /* Smooth transition for changes */
-    /* More styling */
-    margin-bottom: 3rem;
-    .badge-span {
-      background-color: azure;
-      text-align: center;
-      width: 100%;
-      color: black;
-    }
-  }
+ 
 </style>
-<script lang="ts">
-  document.addEventListener("mousemove", (e) => {
-    const badge = document.getElementById("interactive-badge");
-    if (!badge) return;
 
-    const badgeRect = badge.getBoundingClientRect();
-
-    const x = e.clientX - badgeRect.left;
-    const y = e.clientY - badgeRect.top;
-
-    // Example: Change color based on cursor proximity
-    if (Math.abs(x) < 100 && Math.abs(y) < 100) {
-      badge.style.backgroundColor = "blue"; // Dynamic color when cursor is near
-    } else {
-      badge.style.backgroundColor = "red"; // Default color
-    }
-  });
-</script>
   

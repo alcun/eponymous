@@ -1,109 +1,103 @@
-<nav class="nav">
+---
+// No useState import required
+// Frontmatter script space
+---
+
+<!-- Sidebar HTML structure -->
+<nav class="nav" id="sidebar">
   <div class="nav-content">
-    <a href="/" class="logo">EM</a>
+    <a href="/" class="logo"><h1>EM</h1></a>
     <button id="menu-toggle">☰</button>
-
-    <!-- Menu toggle for mobile -->
-    <nav>
-      <ul class="nav-links">
-        <li><a href="/blog">Blog</a></li>
-
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/tags">Tags</a></li>
-
-        <!-- Add more links as needed -->
-      </ul>
-    </nav>
+    <ul class="nav-links">
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/tags">Tags</a></li>
+    </ul>
   </div>
 </nav>
 
+<!-- Styles -->
 <style>
-  .nav {
-    /* Your existing styles for .header, plus any modifications for mobile view */
-    height: 100vh;
-    button {
-background-color: transparent;
-    }
-  }
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4rem; /* Collapsed width */
+  height: 100vh;
+  border-right: 1px solid #ccc; /* Example border color */
+  transition: width 0.5s ease; /* Smooth transition for sidebar expansion */
+  z-index: 1000; /* Ensure sidebar is above other content */
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
 
-  .nav-content {
-    display: flex;
-    align-items: center;
-    /* justify-content: space-between; */
-    /* Other styling as needed */
+.nav-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.logo h1 {
+  margin: 1rem 0;
+  color: var(--text-color);
+}
+
+#menu-toggle {
+  display: none; /* Hide toggle button by default, shown in mobile view */
+}
+
+.nav-links {
+  list-style-type: none;
+  padding: 0;
+  width: 100%; /* Full width of the sidebar */
+  color: var(--text-color);
+
+}
+
+.nav-links li a {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+  color: black; /* Link color */
+}
+
+/* Expanded state for larger screens */
+@media (min-width: 768px) {
+  .nav:hover, .nav.expanded {
+    width: 16rem; /* Expanded width */
+  }
+}
+
+/* Adjustments for mobile screens */
+@media (max-width: 768px) {
+  .nav-links.expanded {
+    display: block;
   }
 
   #menu-toggle {
-    display: none; /* Hidden by default, shown in mobile view */
+    display: block; /* Show toggle button in mobile view */
+    cursor: pointer;
   }
-
-  nav > nav {
-    display: flex;
-  }
-
-  .nav-links {
-    list-style: none;
-    display: flex; /* Display horizontally in desktop view */
-  }
-
-  .logo {
-    margin-bottom: 1rem;
-  }
-
-  /* Responsive Styles for Desktop View */
-  @media (min-width: 768px) {
-    .nav {
-      /* Adjust for sidebar styling */
-      position: fixed;
-      width: 4rem; /* Sidebar width */
-      height: 100%;
-      border-right: 1px solid var(--text-color);
-      /* Other sidebar styles */
-    }
-
-    .nav-content {
-      flex-direction: column;
-      height: 100%;
-      width: 4rem;
-      padding: 1rem 0rem;
-    }
-
-    .nav-links {
-      flex-direction: column; /* Stack links vertically in sidebar */
-      /* Other sidebar styles */
-    }
-
-    #menu-toggle {
-      display: none; /* Hide menu toggle in desktop view */
-    }
-  }
-
-  /* Adjust navbar appearance and functionality for mobile view */
-  @media (max-width: 767px) {
-    .nav-links,
-    #theme-toggle {
-      display: none; /* Hide by default, show when menu is toggled */
-    }
-
-    #menu-toggle {
-      display: block; /* Show menu toggle button */
-    }
-
-    /* When menu is toggled */
-    .nav-active .nav-links,
-    .nav-active #theme-toggle {
-      display: flex;
-      flex-direction: column;
-    }
-  }
+}
 </style>
 
-<script>
+<script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const menuToggle = document.getElementById('menu-toggle');
 
+    // Toggle sidebar on hover for desktop
+    sidebar.onmouseover = () => {
+      if(window.innerWidth > 768) sidebar.classList.add('expanded');
+    };
+    sidebar.onmouseout = () => {
+      if(window.innerWidth > 768) sidebar.classList.remove('expanded');
+    };
 
-  // document.getElementById("menu-toggle").addEventListener("click", function () {
-  //   document.querySelector(".nav-content").classList.toggle("nav-active");
-  // });
-
-
+    // Toggle sidebar on click for mobile
+    menuToggle.onclick = () => {
+      const isExpanded = sidebar.classList.contains('expanded');
+      if(window.innerWidth <= 768) sidebar.classList.toggle('expanded', !isExpanded);
+    };
+  });
 </script>

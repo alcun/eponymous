@@ -7,9 +7,10 @@ import Layout from "../../layouts/Layout.astro";
 const blogPosts = await getCollection('projects');
 
 ---
-<Layout title="Projects">
+<Layout title="Projects | Eponymous.dev">
 <div>
   <h1>Projects</h1>
+  <p>Here is a list of projects I have worked on:</p>
   <ul>
     {blogPosts.map(post => (
       <li key={post.slug}>
