@@ -1,21 +1,17 @@
 ---
 import { getCollection } from 'astro:content';
+import ProjectSummary from "../components/ProjectSummary.astro"; // Ensure the path matches your file structure
 
 // Fetch the first three projects
 const allProjects = await getCollection('projects');
 const projects = allProjects.slice(0, 3);
 ---
 
-
-  <section id="projects">
-    <h2>Things I've Worked On</h2>
+<section id="projects">
+  <h2>Things I've Worked On</h2>
+  <ul style="list-style: none; padding: 0;">
     {projects.map(project => (
-      <div class="project-item">
-        <h3>{project.data.title}</h3>
-        <p>{project.data.summary}</p>
-        <!-- Add a link to the detailed project page -->
-        <a href={`/projects/${project.slug}`}>Read more</a>
-      </div>
+      <ProjectSummary key={project.slug} project={project} />
     ))}
-  </section>
-
+  </ul>
+</section>

@@ -1,26 +1,20 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from "../../layouts/Layout.astro";
-
+import ProjectSummary from "../../components/ProjectSummary.astro"; // Adjust the path as necessary
 
 // Fetch all entries from the 'project' collection
 const blogPosts = await getCollection('projects');
-
 ---
+
 <Layout title="Projects | Eponymous.dev">
 <div>
   <h1>Projects</h1>
   <p>Here is a list of projects I have worked on:</p>
-  <ul>
+  <ul style="list-style: none; padding: 0;">
     {blogPosts.map(post => (
-      <li key={post.slug}>
-        <a href={`/projects/${post.slug}`}>
-          <h2>{post.data.title}</h2>
-        </a>
-        {post.data.summary}
-      </li>
+      <ProjectSummary key={post.slug} project={post} />
     ))}
   </ul>
-  
 </div>
 </Layout>
