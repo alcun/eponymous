@@ -1,12 +1,7 @@
----
-// Your frontmatter script. JavaScript imports for client-side libraries
-// don't go here if they're in the public folder.
----
-
 <!-- Linking the Atropos CSS file -->
 <link rel="stylesheet" href="/atropos/atropos.min.css" />
 
-<!-- main Atropos container -->
+<!-- Main Atropos container -->
 <div class="atropos my-atropos">
   <div class="atropos-scale">
     <div class="atropos-rotate">
@@ -15,7 +10,7 @@
           <div class="hero-badge-inner">
             <h2>Hello! My name is</h2>
             <div class="hero-badge-middle"><h1>Eponymous</h1></div>
-            <span>hee</span>
+            <span>Welcome to my world</span>
           </div>
         </div>
       </div>
@@ -26,58 +21,76 @@
 <!-- Referencing Atropos JavaScript from the public directory -->
 <script>
   function init() {
-    // Ensure the page has loaded before trying to access external libraries
     const script = document.createElement("script");
     script.src = "/atropos/atropos.min.js";
     script.onload = () => {
-      // Initialize Atropos or any other scripts after the library has loaded
       const myAtropos = Atropos({
         el: ".my-atropos",
-        // Additional options here
+        rotateTouch: "scroll", // Adjust based on preference
+        highlight: false, // Disable or enable highlight
       });
-
-      // Clean up by destroying instances and removing event listeners before swapping pages
-      document.addEventListener(
-        "astro:before-swap",
-        () => {
-          // Perform any necessary cleanup
-          myAtropos?.destroy?.();
-          // Example: burger.removeEventListener(...)
-        },
-        { once: true }
-      );
+      document.addEventListener("astro:before-swap", () => myAtropos?.destroy?.(), { once: true });
     };
     document.body.appendChild(script);
   }
-
-  // Initialize on first load
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }
-
-  // Re-initialize after swapping pages
   document.addEventListener("astro:after-swap", init);
 </script>
+
 <style>
+ :root {
+    --accent-color: #4FD1C5; /* Teal accent, vibrant against both light and dark */
+    --background-color: #13151a; /* Dark mode background */
+    --text-color: #ffffff; /* Dark mode text */
+    --hero-text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
   .atropos {
-    margin-bottom: 1rem;
-    width: 80%;
-
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 800px;
+    perspective: 1500px; /* Enhanced for more depth */
   }
+
   .atropos-inner {
-    background-color: antiquewhite;
-    border-radius: 12px;
-    background-color: red;
+    border-radius: 20px;
+    background: linear-gradient(145deg, var(--accent-color), #06b6d4); /* Gradient for depth */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7); /* Enhanced shadow for 3D pop */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px; /* Increased height for more content */
+    transition: transform 0.5s ease-out; /* Smooth transition for 3D effect */
   }
 
-  .hero-badge-inner {
+  .hero-badge-inner h2, .hero-badge-inner span, .hero-badge-middle h1 {
+    text-shadow: var(--hero-text-shadow); /* Text shadow for depth */
   }
 
-  .hero-badge-middle {
+  .hero-badge-inner h2 {
+    color: var(--background-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .hero-badge-middle h1 {
     background-color: var(--background-color);
     color: var(--text-color);
-    padding: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 2.5rem; /* Larger font size for name emphasis */
+    margin: 1rem 0; /* Adjusted margin for spacing */
+  }
+
+  .hero-badge-inner span {
+    color: var(--background-color);
+    font-size: 1.25rem;
+    margin-top: 1rem;
   }
 </style>

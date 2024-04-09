@@ -49,6 +49,16 @@ function reflectPreference() {
 // set early so no page flashes / CSS is made aware
 reflectPreference();
 
+const initNavListener = () => {
+  // Navigation menu toggle functionality
+  const navContent = document.querySelector('.nav-content');
+  const burger = document.querySelector('.burger');
+  burger?.addEventListener('click', () => {
+    const isDisplayed = window.getComputedStyle(navContent).display !== 'none';
+    navContent.style.display = isDisplayed ? 'none' : 'flex';
+  });}
+
+
 window.onload = () => {
   function setThemeFeature() {
     // set on load so screen readers can get the latest value on the button
@@ -59,6 +69,7 @@ window.onload = () => {
       themeValue = themeValue === "light" ? "dark" : "light";
       setPreference();
     });
+    initNavListener();
   }
 
   setThemeFeature();
