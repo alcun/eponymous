@@ -1,7 +1,7 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
-import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -13,88 +13,106 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-	<ViewTransitions />
+    <ViewTransitions />
 
-  <script is:inline src="/toggle-theme.js"></script>
+    <script is:inline src="/toggle-theme.js"></script>
   </head>
   <body transition:persist>
     <Navbar />
-	<ThemeToggle/>
-	<main>
-    <slot /></main>
+    <!-- <ThemeToggle/> -->
+    <main>
+      <slot />
+    </main>
   </body>
-</html>
+  </html>
 
-
-<style is:global>
-/* Global Variables */
-:root,
-  html[data-theme="dark"]{
-    --background-color: #13151a; /* Dark mode background */
-    --text-color: #ffffff; /* Dark mode text color */
-    --code-background: /* Your dark mode code background color */;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(136, 58, 234),
-      rgb(224, 204, 250) 30%,
-      #13151a 60%
-    );
-    /* Other shared variables */
-}
-
-/* Manual Light Mode Override */
-html[data-theme="light"] {
-    --background-color: #ffffff;
-    --text-color: #000000;
-    --code-background: /* Your light mode code background color */;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(136, 58, 234),
-      rgb(224, 204, 250) 30%,
-      white 60%
-    );
-}
-
-/* Applying Variables */
-html {
-    background: var(--background-color);
-    color: var(--text-color);
-    font-family: system-ui,ui-sans-serif,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";    background-size: 224px;
-	
-}
-
-body {
-	padding: 0;
-	margin: 0;
-}
-
-code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-    background: var(--code-background);
-}
-
-a {
-	text-decoration: none;
-}
-main {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    font-size: 20px;
+  <style is:global>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root,
+    html[data-theme="dark"] {
+      --background-color: #13151a;
+      --text-color: #ffffff;
+      --code-background: #2d2d2d;
+    }
+    
+    html[data-theme="light"] {
+      --background-color: #f0f0f0;
+      --text-color: #000000;
+      --code-background: #eeeeee;
+    }
+    
+    body, html {
+      height: 100%;
+      background: var(--background-color);
+      color: var(--text-color);
+      font-family: system-ui, ui-sans-serif, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+    }
+    
+    code {
+      font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+      background: var(--code-background);
+    }
+    
+    main {
+      margin-top: 4rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      font-size: 16px;
     line-height: 1.6;
+    }
+    
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+    
+    input,
+    button,
+    textarea,
+    select {
+      font: inherit;
+    }
+    
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      overflow-wrap: break-word;
+    }
+
+    ul,
+  ol {
+    list-style-position: inside; /* Ensures bullets/numbers are inside the overflow area */
   }
 
   section {
-      padding-top: 2.5rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid var(--text-color);
-    }
-</style>
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    border-bottom: 1px solid var(--text-color);
+  }
+    
+    </style>
+    

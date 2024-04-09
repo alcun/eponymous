@@ -1,18 +1,27 @@
 ---
+import ThemeToggle from "./ThemeToggle.astro";
+
 // No useState import required
 // Frontmatter script space
 ---
 
 <!-- Sidebar HTML structure -->
-<nav class="nav" id="sidebar">
+<nav class="nav" >
   <div class="nav-content">
-    <a href="/" class="logo"><h1>EM</h1></a>
-    <button id="menu-toggle">☰</button>
+    <a href="/" class="logo">EM</a>
     <ul class="nav-links">
       <li><a href="/blog">Blog</a></li>
       <li><a href="/projects">Projects</a></li>
       <li><a href="/tags">Tags</a></li>
-    </ul>
+     <li> <a
+      id="theme-btn"
+      class="focus-outline"
+      title="Toggles light & dark"
+      aria-label="auto"
+      aria-live="polite"
+    >
+      Theme
+    </a> </li>   </ul>
   </div>
 </nav>
 
@@ -21,83 +30,34 @@
 .nav {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 4rem; /* Collapsed width */
-  height: 100vh;
-  border-right: 1px solid #ccc; /* Example border color */
-  transition: width 0.5s ease; /* Smooth transition for sidebar expansion */
+  height: auto;
+  width: 100%;
+  max-width: 100vw;
   z-index: 1000; /* Ensure sidebar is above other content */
-  overflow-x: hidden; /* Hide horizontal overflow */
+  border-bottom: 1px solid var(--text-color);
+  padding: 1rem;
 }
 
 .nav-content {
   display: flex;
-  flex-direction: column;
+  width: 100%;
   align-items: center;
-  height: 100%;
+  justify-content: space-between;
 }
 
 .logo h1 {
-  margin: 1rem 0;
   color: var(--text-color);
-}
-
-#menu-toggle {
-  display: none; /* Hide toggle button by default, shown in mobile view */
 }
 
 .nav-links {
-  list-style-type: none;
-  padding: 0;
-  width: 100%; /* Full width of the sidebar */
-  color: var(--text-color);
-
+  display: flex;
+  list-style: none;
 }
 
-.nav-links li a {
-  display: block;
-  padding: 1rem;
-  text-decoration: none;
-  color: black; /* Link color */
-}
 
-/* Expanded state for larger screens */
-@media (min-width: 768px) {
-  .nav:hover, .nav.expanded {
-    width: 16rem; /* Expanded width */
-  }
-}
 
-/* Adjustments for mobile screens */
-@media (max-width: 768px) {
-  .nav-links.expanded {
-    display: block;
-  }
 
-  #menu-toggle {
-    display: block; /* Show toggle button in mobile view */
-    cursor: pointer;
-  }
-}
+
 </style>
 
-<script type="module">
-  document.addEventListener('DOMContentLoaded', () => {
-    const sidebar = document.getElementById('sidebar');
-    const menuToggle = document.getElementById('menu-toggle');
 
-    // Toggle sidebar on hover for desktop
-    sidebar.onmouseover = () => {
-      if(window.innerWidth > 768) sidebar.classList.add('expanded');
-    };
-    sidebar.onmouseout = () => {
-      if(window.innerWidth > 768) sidebar.classList.remove('expanded');
-    };
-
-    // Toggle sidebar on click for mobile
-    menuToggle.onclick = () => {
-      const isExpanded = sidebar.classList.contains('expanded');
-      if(window.innerWidth <= 768) sidebar.classList.toggle('expanded', !isExpanded);
-    };
-  });
-</script>

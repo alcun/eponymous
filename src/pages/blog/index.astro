@@ -13,7 +13,7 @@ const blogPosts = await getCollection('blog');
   <p>Here is a list of things I've written:</p>
   <ul>
     {blogPosts.map(post => (
-      <li key={post.slug}>
+      <li >
         <a href={`/blog/${post.slug}`}>
          <h2>{post.data.title}</h2> 
         </a>
