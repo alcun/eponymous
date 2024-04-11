@@ -51,13 +51,13 @@ reflectPreference();
 
 const initNavListener = () => {
   // Navigation menu toggle functionality
-  const navContent = document.querySelector('.nav-content');
-  const burger = document.querySelector('.burger');
-  burger?.addEventListener('click', () => {
-    const isDisplayed = window.getComputedStyle(navContent).display !== 'none';
-    navContent.style.display = isDisplayed ? 'none' : 'flex';
-  });}
-
+  const navContent = document.querySelector(".nav-content");
+  const burger = document.querySelector(".burger");
+  burger?.addEventListener("click", () => {
+    const isDisplayed = window.getComputedStyle(navContent).display !== "none";
+    navContent.style.display = isDisplayed ? "none" : "flex";
+  });
+};
 
 window.onload = () => {
   function setThemeFeature() {
@@ -70,12 +70,17 @@ window.onload = () => {
       setPreference();
     });
     initNavListener();
+    initScrollListener();
   }
 
   setThemeFeature();
 
   // Runs on view transitions navigation
-  document.addEventListener("astro:after-swap", setThemeFeature);
+  document.addEventListener(
+    "astro:after-swap",
+    setThemeFeature,
+    initScrollListener
+  );
 };
 
 // sync with system changes
@@ -85,3 +90,14 @@ window
     themeValue = isDark ? "dark" : "light";
     setPreference();
   });
+
+function initScrollListener() {
+  const navContent = document.querySelector(".nav-content");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 0) {
+      navContent.classList.add("is-scrolled");
+    } else {
+      navContent.classList.remove("is-scrolled");
+    }
+  });
+}

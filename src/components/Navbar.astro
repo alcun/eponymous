@@ -10,7 +10,7 @@ import ThemeToggle from "./ThemeToggle.astro";
   <div class="nav-content">
     <div class="logo">
       <a href="/"><img src="/img/avatar.png" alt="Eponymous Mann" />
-        <span>Eponymous Mann</span>
+        <span>Eponymous.dev</span>
       </a>
     </div>
     <ul class="nav-links">
@@ -48,10 +48,16 @@ import ThemeToggle from "./ThemeToggle.astro";
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    border-bottom: 1px solid var(--text-color);
+    border-bottom: 1px solid transparent;
     padding: 0.75rem 1.5rem;
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--nav-background);
     backdrop-filter: saturate(180%) blur(4px);  
+    transition: border ease 0.3s;
+  }
+
+  .is-scrolled {
+    border-bottom: 1px solid var(--text-color);
+
   }
 
   .nav-content img {
