@@ -2,6 +2,7 @@
 title: "Combining Astro with React for Dynamic Websites"
 date: "2024-03-05"
 summary: "Learn how to integrate React components into your Astro projects for dynamic, interactive web applications."
+image: '/img/posts/logo.png'
 ---
 
 Astro offers a unique approach to building websites by allowing developers to integrate components from various frameworks, including React. This integration enables the creation of dynamic, interactive web applications while maintaining the performance benefits of static site generation.

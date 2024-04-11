@@ -1,22 +1,32 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 // Fetch the first three posts
-const allPosts = await getCollection('posts');
+const allPosts = await getCollection("posts");
 const posts = allPosts.slice(0, 3);
 ---
 
-
-  <section id="posts">
-    <h2>Things I've Written</h2>
-    {posts.map(post => (
-      <div class="posts-item">
-        <h3>{post.data.title}</h3>
-        <p>{post.data.summary}</p>
-        <!-- Add a link to the detailed post post -->
-        <a href={`/post/${post.slug}`}>Read more</a>
+<section id="posts">
+  <h2>Posts</h2>
+  {
+    posts.map((post) => (
+      <div class="post-item">
+        <span>{post.data.date}</span>
+        <a href={`/posts/${post.slug}`}>
+          {" "}
+          <h3>{post.data.title}</h3>
+        </a>
       </div>
-    ))}
-    <div><a href={`/post`}>See all...</a> </div>
-  </section>
+    ))
+  }
+  <div><a href={`/posts`}>See all...</a></div>
+</section>
 
+
+<style>
+.post-item{
+  display: flex;
+  align-items: center;
+}
+
+</style>

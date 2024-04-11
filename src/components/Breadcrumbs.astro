@@ -1,0 +1,77 @@
+---
+// Breadcrumbs component for Astro
+
+// Define the static routes and their corresponding labels
+const routes = {
+  '/': 'Home',
+  '/posts': 'Posts',
+  '/projects': 'Projects',
+};
+
+// Props passed from the page rendering this component
+const { currentPageTitle } = Astro.props;
+
+
+function generateBreadcrumbs(urlPath) {
+  const segments = urlPath.split('/').filter(Boolean);
+  const breadcrumbPaths = [{ path: '/', label: 'Home' }]; // Start with Home
+  let accumulatedPath = '';
+
+  // Build breadcrumb paths from URL segments
+  segments.forEach((segment, index) => {
+    accumulatedPath += '/' + segment;
+    const isLastSegment = index === segments.length - 1;
+    const label = routes[accumulatedPath] || segment; // Use the route label or the segment
+    
+    if (isLastSegment && currentPageTitle) {
+      breadcrumbPaths.push({ path: accumulatedPath, label: currentPageTitle }); // Use dynamic title for last crumb
+    } else {
+      breadcrumbPaths.push({ path: accumulatedPath, label });
+    }
+  });
+
+  return breadcrumbPaths;
+}
+
+// Get the pathname from the current URL
+const breadcrumbs = generateBreadcrumbs(Astro.url.pathname);
+---
+<div aria-label="breadcrumb" class="breadcrumbs">
+  <ol>
+    {breadcrumbs.map(crumb => (
+      <li key={crumb.path}>
+        {crumb.path === Astro.url.pathname ? (
+          <span>{crumb.label}</span>  // Make current page non-clickable
+        ) : (
+          <a href={crumb.path}>{crumb.label}</a>  // Other breadcrumbs are clickable
+        )}
+      </li>
+    ))}
+  </ol>
+</div>
+
+<style>
+  .breadcrumbs ol {
+    padding: 0;
+    margin: 0;
+    line-height: 20px;
+  }
+
+  .breadcrumbs li {
+    display: inline;
+  }
+
+  .breadcrumbs li:not(:last-child)::after {
+    content: " › ";
+    padding: 0 8px;
+  }
+
+  .breadcrumbs a {
+    text-decoration: none;
+    color: #0077cc;
+  }
+
+  .breadcrumbs span {
+    color: #000;
+  }
+</style>

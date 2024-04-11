@@ -28,21 +28,29 @@ const technologies = [
 ];
 ---
 
-<section id="toolkit">
-  <h2>Toolkit</h2>
+<section id="technologies">
+  <h2>Technologies</h2>
   <p>With any project, pragmatism is the name of the game and any tool is up for consideration if it is the right fit.</p>
   <p>That being said, the following is a list of tools I am familiar with and will tend to reach for:</p>
   <ul>
     {technologies.map(tech => (
       <li>
-        <strong>{tech.label}</strong> - {tech.summary}
+        <strong>{tech.label}</strong> 
       </li>
     ))}
   </ul>
 </section>
   
 
-<!-- <style>
+<style>
+  ul{
+    display: flex;
+    flex-wrap: wrap;
+
+    li{
+      width: 50%;
+    }
+  }
 
   
-</style> -->
+</style>

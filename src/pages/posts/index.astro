@@ -7,14 +7,14 @@ import Layout from "../../layouts/Layout.astro";
 const posts = await getCollection('posts');
 
 ---
-<Layout title="Blog | Eponymous.dev">
+<Layout title="Posts | Eponymous.dev">
 <div>
-  <h1>Blog Posts</h1>
+  <h1>Posts</h1>
   <p>Here is a list of things I've written:</p>
   <ul>
     {posts.map(post => (
       <li >
-        <a href={`/post/${post.slug}`}>
+        <a href={`/posts/${post.slug}`}>
          <h2>{post.data.title}</h2> 
         </a>
         {post.data.summary}
