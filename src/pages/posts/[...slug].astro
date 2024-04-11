@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+// 1. Generate a new path for every collection post
+export async function getStaticPaths() {
+  const postCollection = await getCollection("posts");
+  return postCollection.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+// 2. For your template, you can get the post directly from the prop
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={`${post.data.title} | Blog | Eponmous.dev`}>
+  <h1>{post.data.title}</h1>
+  <Content /></Layout
+>

@@ -14,10 +14,10 @@ import ThemeToggle from "./ThemeToggle.astro";
       </a>
     </div>
     <ul class="nav-links">
-      <li><a href="/blog">Blog</a></li>
+      <li><a href="/posts">Posts</a></li>
       <li><a href="/projects">Projects</a></li>
       <li><a href="/tags">Tags</a></li>
-      <li><a id="theme-btn" class="focus-outline" title="Toggles light & dark" aria-label="auto" aria-live="polite">Theme</a></li>
+      <li><button id="theme-btn" class="focus-outline" title="Toggles light & dark" aria-label="auto" aria-live="polite">🌞</button></li>
     </ul>
   </div>
 </nav>
@@ -71,14 +71,13 @@ import ThemeToggle from "./ThemeToggle.astro";
 
   .nav-links {
     display: flex;
+    align-items: center;
     list-style: none;
     padding: 0;
     margin: 0;
     li {
       margin-left: 0.5rem;
-      a {
-        color: var(--text-color);
-      }
+    
     }
   }
 
@@ -104,4 +103,25 @@ import ThemeToggle from "./ThemeToggle.astro";
       display: block;
     }
   }
+  #theme-btn {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid var(--accent-color); /* Use the accent color for the border */
+  padding: 0.5rem 0.75rem; /* Add some padding */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
+  color: var(--accent-color); /* Text color matches the accent color */
+  text-align: center; /* Ensure text is centered */
+  text-decoration: none; /* Remove text decoration */
+  display: inline-block; /* Align with other inline elements */
+  border-radius: 12px; /* Slightly rounded corners for a modern look */
+}
+
+#theme-btn:hover,
+#theme-btn:focus {
+  background-color: var(--accent-color); /* Fill button with accent color on hover/focus */
+  color: var(--background-color); /* Contrast text color on hover/focus */
+}
+
 </style>

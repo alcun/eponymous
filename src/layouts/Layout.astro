@@ -1,5 +1,6 @@
 ---
 import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import { ViewTransitions } from "astro:transitions";
 
@@ -29,6 +30,8 @@ const { title } = Astro.props;
     <main>
       <slot />
     </main>
+    <Footer/>
+
   </body>
   </html>
 
@@ -48,6 +51,7 @@ const { title } = Astro.props;
       --code-background: #2d2d2d;
       --breakpoint-width: 768px;
       --accent-color: #4FD1C5;
+      --accent-hover-color: #3fb0b3; /* Darker shade for hover */
       --hero-text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
     }
 
@@ -56,6 +60,7 @@ const { title } = Astro.props;
       --text-color: #000000;
       --code-background: #eeeeee;
       --accent-color: #06b6d4;
+      --accent-hover-color: #059cb0; /* Darker shade for hover */
     }
 
     body,
@@ -135,9 +140,53 @@ const { title } = Astro.props;
       border-bottom: 1px solid var(--text-color);
     }
 
+    a {
+  color: var(--accent-color); /* Use the accent color for link text */
+  text-decoration: none; /* No underline to keep it minimal */
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition for changes */
+}
+
+a:hover,
+a:focus {
+  color: var(--accent-hover-color); /* Use the slightly darker color on hover/focus */
+  text-decoration: underline; /* Add underline on hover/focus for clarity */
+}
+
+    /* Base table styles */
+table {
+  width: 100%; /* Full-width */
+  border-collapse: collapse; /* Collapse borders */
+  margin: 20px 0; /* Add some margin around the table */
+  font-size: 0.9em; /* Adjust font size */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+}
+
+/* Table headers */
+th {
+  text-align: left; /* Align text to the left */
+  padding: 12px 15px; /* Add some padding */
+}
+
+/* Table cells */
+td {
+  border-bottom: 1px solid #dddddd; /* Light border for each cell */
+  padding: 12px 15px; /* Padding for cell content */
+}
+
+
+/* Make the last row's border bottom more pronounced */
+tr:last-of-type td {
+  border-bottom: 2px solid #009879; /* Darker border for the last row */
+}
+
+p, figure, h1, h2{
+  margin-bottom: 1rem;
+}
+
     @media (max-width: 768px) {
     main {
       margin-top: 3rem;
-
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
     }
   </style>

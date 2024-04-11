@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 
 
 // Fetch all entries from the 'project' collection
-const blogPosts = await getCollection('blog');
+const posts = await getCollection('posts');
 
 ---
 <Layout title="Blog | Eponymous.dev">
@@ -12,9 +12,9 @@ const blogPosts = await getCollection('blog');
   <h1>Blog Posts</h1>
   <p>Here is a list of things I've written:</p>
   <ul>
-    {blogPosts.map(post => (
+    {posts.map(post => (
       <li >
-        <a href={`/blog/${post.slug}`}>
+        <a href={`/post/${post.slug}`}>
          <h2>{post.data.title}</h2> 
         </a>
         {post.data.summary}
