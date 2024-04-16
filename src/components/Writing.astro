@@ -7,26 +7,39 @@ const posts = allPosts.slice(0, 3);
 ---
 
 <section id="posts">
-  <h2>Posts</h2>
+  <h2>Recent Posts</h2>
   {
     posts.map((post) => (
       <div class="post-item">
-        <span>{post.data.date}</span>
-        <a href={`/posts/${post.slug}`}>
-          {" "}
-          <h3>{post.data.title}</h3>
+        <span class="post-date">{post.data.date}</span>
+        <a class="post-title" href={`/posts/${post.slug}`}>
+          <h4>{post.data.title}</h4>
         </a>
       </div>
     ))
   }
-  <div><a href={`/posts`}>See all...</a></div>
+  <div class="see-all-link">
+    <a href={`/posts`}>See all posts...</a>
+  </div>
 </section>
 
-
 <style>
-.post-item{
-  display: flex;
-  align-items: center;
-}
+  .post-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+  }
 
+  .post-date {
+    font-size: 0.8em;
+    margin-right: 20px;
+    white-space: nowrap; /* Ensures the date stays on one line */
+    height: 100%;
+  }
+
+  .see-all-link {
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
 </style>

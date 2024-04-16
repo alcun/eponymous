@@ -1,16 +1,14 @@
-<section id="about">
-  <p>Hi 👋</p>
-  <p>I develop things on the world wide web.</p>
+---
+import { Icon } from "astro-icon/components";
+---
 
+<section id="about">
+  <h1>Greetings traveller 👋</h1>
   <p>
-    Passionate about crafting seamless, innovative digital experiences, I
-    specialize in bringing ideas to life through meticulous code and creative
-    design.
+    Welcome to Eponymous.dev - an Astro site template built with simplicity and performance in mind.
   </p>
-  <p>
-    From front-end to back-end, my journey in web development is driven by a
-    relentless pursuit of learning and improvement.
-  </p>
+  <p>Feel free to use it to showcase your posts and projects.</p>
+  <p>Find me @</p>
 
   <div class="social-links">
     <ul>
@@ -18,21 +16,7 @@
         <a
           href="https://github.com/yourusername"
           target="_blank"
-          rel="noopener noreferrer">GitHub</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/yourusername"
-          target="_blank"
-          rel="noopener noreferrer">Twitter</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://linkedin.com/in/yourusername"
-          target="_blank"
-          rel="noopener noreferrer">LinkedIn</a
+          rel="noopener noreferrer"><Icon name="lucide:github" /></a
         >
       </li>
     </ul>
@@ -46,6 +30,14 @@
     padding-bottom: 0.5rem;
     li {
       margin-right: 1rem;
+      span {
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-left: 0.5rem;
+        }
+      }
     }
   }
 </style>

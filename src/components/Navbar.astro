@@ -1,12 +1,10 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro";
-// No useState import required
-// Frontmatter script space
+import { Icon } from "astro-icon/components";
 ---
 
 <!-- Sidebar HTML structure -->
 <nav class="nav">
-  <div class="burger">☰</div> <!-- Burger Icon -->
+  <div class="burger"><Icon name="lucide:menu" /></div> <!-- Burger Icon -->
   <div class="nav-content">
     <div class="logo">
       <a href="/"><img src="/img/avatar.png" alt="Eponymous Mann" />
@@ -50,14 +48,14 @@ import ThemeToggle from "./ThemeToggle.astro";
     width: 100%;
     border-bottom: 1px solid transparent;
     padding: 0.75rem 1.5rem;
-    background: var(--nav-background);
-    backdrop-filter: saturate(180%) blur(4px);  
+
     transition: border ease 0.3s;
   }
 
   .is-scrolled {
     border-bottom: 1px solid var(--text-color);
-
+    background: var(--nav-background);
+    backdrop-filter: saturate(180%) blur(4px);  
   }
 
   .nav-content img {

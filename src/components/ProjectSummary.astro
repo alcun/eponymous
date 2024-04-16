@@ -18,7 +18,7 @@ const { project } = Astro.props as ProjectSummaryProps;
   <img src={project.data.thumbnail} alt={`Thumbnail for ${project.data.title}`} />
   <div>
     <a href={`/projects/${project.slug}`}>
-      <h2>{project.data.title}</h2>
+      <h4>{project.data.title}</h4>
     </a>
     <p>{project.data.summary}</p>
   </div>
