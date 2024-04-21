@@ -18,19 +18,27 @@ const { Content } = await post.render();
 
 <Layout title={`${post.data.title} | Posts | Eponymous.dev`}>
   <article>
-    {post.data.image && (
-      <div class="post-image">
-        <img src={post.data.image} alt={`Image for ${post.data.title}`} />
-      </div>
-    )}
+    {
+      post.data.image && (
+        <div class="post-image">
+          <img src={post.data.image} alt={`Image for ${post.data.title}`} />
+        </div>
+      )
+    }
     <h1>{post.data.title}</h1>
+    <div class="author-box">
+      <div>AuthorImg</div><div class="author-box-right">
+        <div>name</div>
+        <div>date</div>
+      </div>
+    </div>
     <Content />
   </article>
 </Layout>
 
 <style>
   .post-image img {
-    height:400px;
+    height: 400px;
     object-fit: cover;
     width: 100%;
     border-radius: 20px;
@@ -41,5 +49,14 @@ const { Content } = await post.render();
 
   h1 {
     margin-top: 1rem;
+  }
+
+  .author-box {
+    display: flex;
+  }
+
+  .author-box-right {
+    display: flex;
+    flex-direction: column;
   }
 </style>

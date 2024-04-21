@@ -10,7 +10,7 @@ const blogPosts = await getCollection('projects');
 <Layout title="Projects | Eponymous.dev">
 <div>
   <h1>Projects</h1>
-  <p>Here is a list of projects I have worked on:</p>
+  <p>Here are some example projects from the 'projects' Astro collection:</p>
   <ul style="list-style: none; padding: 0;">
     {blogPosts.map(post => (
       <ProjectSummary key={post.slug} project={post} />

@@ -6,10 +6,10 @@ import Layout from "../../layouts/Layout.astro";
 const posts = await getCollection('posts');
 ---
 
-<Layout title="Posts | Eponymous.dev">
+<Layout title="Posts | ">
   <div>
     <h1>Posts</h1>
-    <p>Here is a list of things I've written:</p>
+    <p>Here are some example posts from the 'posts' Astro collection:</p>
     <ul class="post-list">
       {posts.map(post => (
         <li class="post-item">
@@ -42,7 +42,6 @@ const posts = await getCollection('posts');
 
   .post-date {
     font-size: 0.9em;
-    color: #666;
     padding-right: 20px;
     white-space: nowrap; /* Ensures the date stays on one line */
   }
@@ -51,11 +50,9 @@ const posts = await getCollection('posts');
     flex-grow: 1;
   }
 
-  .post-link h2 {
-    margin: 0 0 5px 0;
-    color: #0077cc;
-    font-weight: normal;
-  }
+  h2{padding-top: 0}
+
+  
 
   .post-summary {
     margin: 0;
@@ -71,7 +68,7 @@ const posts = await getCollection('posts');
     }
 
     .post-date {
-      padding-bottom: 5px;
+      padding-top: 5px;
     }
 
     .post-link h2 {

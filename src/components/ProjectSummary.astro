@@ -1,16 +1,9 @@
 ---
 // Define the props expected by the ProjectSummary component
-interface ProjectSummaryProps {
-  project: {
-    slug: string;
-    data: {
-      title: string;
-      summary: string;
-      thumbnail: string;
-    };
-  };
-}
-const { project } = Astro.props as ProjectSummaryProps;
+
+
+const { project } = Astro.props;
+console.log(project)
 ---
 
 
@@ -27,4 +20,11 @@ const { project } = Astro.props as ProjectSummaryProps;
 
 
 <style>
+  li {
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
 </style>
