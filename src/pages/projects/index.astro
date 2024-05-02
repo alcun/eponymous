@@ -11,10 +11,21 @@ const blogPosts = await getCollection('projects');
 <div>
   <h1>Projects</h1>
   <p>Here are some example projects from the 'projects' Astro collection:</p>
-  <ul style="list-style: none; padding: 0;">
+  <ul >
     {blogPosts.map(post => (
       <ProjectSummary key={post.slug} project={post} />
     ))}
   </ul>
 </div>
 </Layout>
+   
+
+<style>
+  ul{
+    li{
+      margin-bottom: 1rem;
+
+    }
+  }
+
+</style>

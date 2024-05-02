@@ -1,29 +1,36 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 import ProjectSummary from "../components/ProjectSummary.astro"; // Ensure the path matches your file structure
 
 // Fetch the first three projects
-const allProjects = await getCollection('projects');
-const projects = allProjects.slice(0, 3);
+const allProjects = await getCollection("projects");
+const projects = allProjects.slice(0, 4);
 ---
 
 <section id="projects">
   <h2>Projects</h2>
   <ul style="list-style: none; padding: 0;">
-    {projects.map(project => (
-      <ProjectSummary key={project.slug} project={project} />
-    ))}
+    {
+      projects.map((project) => (
+        <ProjectSummary key={project.slug} project={project} />
+      ))
+    }
   </ul>
-  <div><a href={`/projects`}>See all...</a> </div>
-
+  <div><a href={`/projects`}>See all...</a></div>
 </section>
-
 
 <style>
   ul {
     display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 1rem;
-margin-bottom: 1rem;
-}
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    ul {
+    grid-template-columns: 1fr;
+
+  }
+  }
 </style>

@@ -1,11 +1,8 @@
 ---
 // Define the props expected by the ProjectSummary component
 
-
 const { project } = Astro.props;
-console.log(project)
 ---
-
 
 <li class="project-summary">
   <img src={project.data.image} alt={`Thumbnail for ${project.data.title}`} />
@@ -17,20 +14,22 @@ console.log(project)
   </div>
 </li>
 
-
-
 <style>
   li {
     border: 1px solid grey;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: center;
     overflow: clip;
-    img{
+    height: 100%;
+    img {
       width: 100%;
       margin-bottom: 0.5rem;
+      top: 0;
+    }
+    p {
+      padding: 0 0.5rem;
     }
   }
 </style>
